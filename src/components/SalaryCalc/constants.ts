@@ -43,7 +43,7 @@ export const inputPlaceholder: InputPlaceholder = {
     monthly: '₽',
     daily: '₽ в день',
     hourly: '₽ в час',
-    minimal: '₽',
+    minimal: '',
   },
 }
 
