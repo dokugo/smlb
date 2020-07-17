@@ -1,7 +1,6 @@
 import React, { FC } from 'react'
-import { Transition } from 'react-transition-group'
 import styled from 'styled-components/macro'
-import { TransitionContainer } from 'utils/style'
+import { Transition } from 'utils/style'
 
 interface Props {
   text: string
@@ -10,30 +9,18 @@ interface Props {
 }
 
 const TooltipComponent: FC<Props> = ({ text, iconClicked, iconHovered }) => {
-  const animate = iconHovered
-    ? !iconHovered
-    : !iconClicked
-    ? !iconClicked
-    : false
-
-  const animatedTooltip = (transition: string): React.ReactNode => {
-    return (
-      <Tooltip transition={transition} className="Tooltip">
-        {text}
-      </Tooltip>
-    )
-  }
+  const isShown = iconHovered ? iconHovered : iconClicked ? iconClicked : false
 
   return (
-    <Transition in={animate} timeout={1000}>
-      {animatedTooltip}
+    <Transition condition={isShown}>
+      <Tooltip className="Tooltip">{text}</Tooltip>
     </Transition>
   )
 }
 
 export default TooltipComponent
 
-const Tooltip = styled(TransitionContainer)`
+const Tooltip = styled.section`
   background: ${(props): string => props.theme.darkblue};
   box-shadow: 0 16px 48px 0 ${(props): string => props.theme.shadow};
   box-sizing: border-box;

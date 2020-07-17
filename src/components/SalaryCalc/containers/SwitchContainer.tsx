@@ -3,6 +3,7 @@ import { connect, ConnectedProps } from 'react-redux'
 import { RootState } from 'store/rootReducer'
 import { toggleWithTax } from 'store/salary/actions'
 import { PaymentMode } from 'store/salary/types'
+import { Transition } from 'utils/style'
 
 import { switchLabel } from '../constants'
 import Switch from '../ui/Switch'
@@ -15,16 +16,16 @@ const SwitchContainer: FC<StoreProps> = ({
 }) => {
   const isShown = paymentMode !== PaymentMode.Minimal
 
-  if (!isShown) return null
-
   return (
-    <Container>
-      <Switch
-        label={switchLabel}
-        isActive={withTax}
-        toggleIsActive={toggleWithTax}
-      />
-    </Container>
+    <Transition condition={isShown}>
+      <Container>
+        <Switch
+          label={switchLabel}
+          isActive={withTax}
+          toggleIsActive={toggleWithTax}
+        />
+      </Container>
+    </Transition>
   )
 }
 

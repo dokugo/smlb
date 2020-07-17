@@ -13,3 +13,5 @@ const theme: DefaultTheme = {
 }
 
 export default theme
+
+export const transitionTime = 150
