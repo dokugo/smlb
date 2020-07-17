@@ -5,22 +5,30 @@ import { Calculated, PaymentMode } from 'store/salary/types'
 
 import { infoboxData } from '../constants'
 import Infobox from '../ui/Infobox'
+import { LargeMarginBox as Container } from './Box'
 
 type Props = StoreProps
 
 const InfoboxContainer: FC<Props> = ({ paymentMode, calculated }) => {
+  const { net, tax, cost } = calculated
+
+  const isHidden = paymentMode !== PaymentMode.Monthly || !net || !tax || !cost
+
+  if (isHidden) return null
+
   return (
-    <Infobox
-      infoboxData={infoboxData}
-      paymentMode={paymentMode}
-      calculated={calculated}
-    />
+    <Container>
+      <Infobox infoboxData={infoboxData} calculated={calculated} />
+    </Container>
   )
 }
 
 const mapStateToProps = (
   state: RootState
-): { paymentMode: PaymentMode; calculated: Calculated } => ({
+): {
+  paymentMode: PaymentMode
+  calculated: Calculated
+} => ({
   paymentMode: state.salary.paymentMode,
   calculated: state.salary.calculated,
 })

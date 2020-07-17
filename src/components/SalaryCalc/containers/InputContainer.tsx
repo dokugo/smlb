@@ -2,33 +2,39 @@ import React, { FC } from 'react'
 import { connect, ConnectedProps } from 'react-redux'
 import { RootState } from 'store/rootReducer'
 import { setSalaryInput } from 'store/salary/actions'
-import { InputPlaceholder, PaymentMode, SalaryInput } from 'store/salary/types'
+import { PaymentMode, SalaryInput } from 'store/salary/types'
 
+import { inputPlaceholder } from '../constants'
 import Input from '../ui/Input'
+import { MediumMarginBox as Container } from './Box'
 
-interface ComponentProps {
-  placeholder: InputPlaceholder
-}
-
-type Props = StoreProps & ComponentProps
-
-const InputContainer: FC<Props> = ({
-  placeholder,
+const InputContainer: FC<StoreProps> = ({
   paymentMode,
   salaryInput,
   setSalaryInput,
-}) => (
-  <Input
-    paymentMode={paymentMode}
-    placeholder={placeholder}
-    inputData={salaryInput}
-    updateInputData={setSalaryInput}
-  />
-)
+}) => {
+  const isShown = paymentMode !== PaymentMode.Minimal
+
+  if (!isShown) return null
+
+  return (
+    <Container>
+      <Input
+        placeholder={inputPlaceholder}
+        paymentMode={paymentMode}
+        inputData={salaryInput}
+        updateInputData={setSalaryInput}
+      />
+    </Container>
+  )
+}
 
 const mapStateToProps = (
   state: RootState
-): { paymentMode: PaymentMode; salaryInput: SalaryInput } => ({
+): {
+  paymentMode: PaymentMode
+  salaryInput: SalaryInput
+} => ({
   paymentMode: state.salary.paymentMode,
   salaryInput: state.salary.salaryInput,
 })

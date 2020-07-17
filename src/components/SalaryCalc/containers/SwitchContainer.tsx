@@ -2,23 +2,39 @@ import React, { FC } from 'react'
 import { connect, ConnectedProps } from 'react-redux'
 import { RootState } from 'store/rootReducer'
 import { toggleWithTax } from 'store/salary/actions'
+import { PaymentMode } from 'store/salary/types'
 
+import { switchLabel } from '../constants'
 import Switch from '../ui/Switch'
+import { Box as Container } from './Box'
 
-interface ComponentProps {
-  label: {
-    before: string
-    after: string
-  }
+const SwitchContainer: FC<StoreProps> = ({
+  paymentMode,
+  withTax,
+  toggleWithTax,
+}) => {
+  const isShown = paymentMode !== PaymentMode.Minimal
+
+  if (!isShown) return null
+
+  return (
+    <Container>
+      <Switch
+        label={switchLabel}
+        isActive={withTax}
+        toggleIsActive={toggleWithTax}
+      />
+    </Container>
+  )
 }
 
-type Props = StoreProps & ComponentProps
-
-const SwitchContainer: FC<Props> = ({ label, withTax, toggleWithTax }) => (
-  <Switch label={label} isActive={withTax} toggleIsActive={toggleWithTax} />
-)
-
-const mapStateToProps = (state: RootState): { withTax: boolean } => ({
+const mapStateToProps = (
+  state: RootState
+): {
+  paymentMode: PaymentMode
+  withTax: boolean
+} => ({
+  paymentMode: state.salary.paymentMode,
   withTax: state.salary.withTax,
 })
 

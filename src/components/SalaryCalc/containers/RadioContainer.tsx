@@ -4,34 +4,30 @@ import { RootState } from 'store/rootReducer'
 import { changePaymentMode } from 'store/salary/actions'
 import { PaymentMode } from 'store/salary/types'
 
+import { radioData } from '../constants'
 import Radio from '../ui/Radio'
+import Tooltip from '../ui/Tooltip'
+import { LesserPaddingBox as Container } from './Box'
 
-interface ComponentProps {
-  text: string
-  name: string
-  value: PaymentMode
-  tooltip?: React.ReactNode
+const RadioContainer: FC<StoreProps> = ({ paymentMode, changePaymentMode }) => {
+  const radios = radioData.types.map((item) => {
+    const tooltip = item.tooltip ? <Tooltip text={item.tooltip} /> : null
+
+    return (
+      <Radio
+        key={item.id}
+        text={item.text}
+        value={item.value}
+        name={radioData.name}
+        isActive={paymentMode}
+        changeIsActive={changePaymentMode}
+        tooltip={tooltip}
+      />
+    )
+  })
+
+  return <Container>{radios}</Container>
 }
-
-type Props = StoreProps & ComponentProps
-
-const RadioContainer: FC<Props> = ({
-  text,
-  name,
-  value,
-  changePaymentMode,
-  paymentMode,
-  tooltip,
-}) => (
-  <Radio
-    text={text}
-    name={name}
-    value={value}
-    isActive={paymentMode}
-    changeIsActive={changePaymentMode}
-    tooltip={tooltip}
-  />
-)
 
 const mapStateToProps = (state: RootState): { paymentMode: PaymentMode } => ({
   paymentMode: state.salary.paymentMode,

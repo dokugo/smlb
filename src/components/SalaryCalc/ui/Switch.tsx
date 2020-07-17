@@ -50,7 +50,8 @@ export const Label = styled.label`
 `
 
 const LabelAside = styled.span<{ isActive: boolean }>`
-  color: ${(props): string => (props.isActive ? props.theme.black : 'inherit')};
+  color: ${(props): string => (props.isActive ? 'inherit' : props.theme.black)};
+  font-weight: 700;
   transition: 0.15s ease-in-out;
 `
 
@@ -76,7 +77,7 @@ const Switch = styled.input<{ isActive: boolean }>`
     left: 0;
     position: relative;
     top: 0;
-    transition: 0.25s ease-in-out;
+    transition: 0.3s ease-in-out;
     width: 35px;
   }
   &::after {
@@ -88,7 +89,7 @@ const Switch = styled.input<{ isActive: boolean }>`
     left: ${(props): string => (props.isActive ? '17px' : '2px')};
     position: absolute;
     top: 2px;
-    transition: 0.25s ease-in-out;
+    transition: 0.3s ease-in-out;
     width: 16px;
   }
   &:active::after {

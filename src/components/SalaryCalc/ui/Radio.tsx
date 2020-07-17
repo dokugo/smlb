@@ -4,8 +4,8 @@ import styled from 'styled-components/macro'
 
 interface Props {
   text: string
-  name: string
   value: PaymentMode
+  name: string
   isActive: string
   changeIsActive: (value: PaymentMode) => void
   tooltip?: React.ReactNode
@@ -13,10 +13,10 @@ interface Props {
 
 const RadioComponent: FC<Props> = ({
   text,
-  name,
   value,
-  changeIsActive,
+  name,
   isActive,
+  changeIsActive,
   tooltip,
 }) => {
   const active = isActive === value
@@ -35,12 +35,12 @@ const RadioComponent: FC<Props> = ({
     <Container>
       <Label isActive={active} tabIndex={1} onKeyDown={handleKeyDown}>
         <Radio
-          type="radio"
-          name={name}
           value={value}
+          name={name}
           isActive={active}
           onChange={handleChange}
           tabIndex={-1}
+          type="radio"
         />
         {text}
       </Label>
@@ -55,6 +55,9 @@ const Container = styled.section`
   display: flex;
   height: 20px;
   margin-bottom: 5px;
+  &:last-child {
+    margin-bottom: 0;
+  }
 `
 const Radio = styled.input<{ isActive: boolean }>`
   opacity: 0;
@@ -85,7 +88,7 @@ const Label = styled.label<{ isActive: boolean }>`
     margin-right: 10px;
     position: relative;
     top: 0;
-    transition: 0.25s ease-in-out;
+    transition: 0.15s ease-in-out;
     width: 14px;
   }
   &::after {

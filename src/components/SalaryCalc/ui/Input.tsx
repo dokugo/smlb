@@ -21,27 +21,23 @@ const InputComponent: FC<Props> = ({
     if (!event.target.validity.valid) return
 
     const cleanString = event.target.value.replace(/\s+/g, '')
-
-    if (cleanString.length > 13) return
+    if (cleanString.length > 12) return
 
     const payload = Number(cleanString) || ''
-
     updateInputData(payload)
   }
 
   return (
-    <section>
-      <Label>
-        <Input
-          onChange={handleChange}
-          type="text"
-          placeholder={placeholder.field}
-          value={inputDataString}
-          pattern="[0-9\s]*"
-        />
-        <Currency>{placeholder.label[paymentMode]}</Currency>
-      </Label>
-    </section>
+    <Label>
+      <Input
+        onChange={handleChange}
+        type="text"
+        pattern="[0-9\s]*"
+        placeholder={placeholder.field}
+        value={inputDataString}
+      />
+      <Currency>{placeholder.label[paymentMode]}</Currency>
+    </Label>
   )
 }
 
@@ -67,9 +63,9 @@ const Input = styled.input`
   font-weight: 700;
   height: 30px;
   line-height: 30px;
-  padding: 0 12px;
+  padding: 0 15px;
   transition: 0.15s ease-in-out;
-  width: 240px;
+  width: 155px;
   &:focus {
     box-shadow: 0 0 0 1px ${(props): string => props.theme.black};
     outline: 0;
@@ -87,5 +83,6 @@ const Currency = styled.span`
   font-size: 17px;
   font-weight: 700;
   padding: 0 10px;
+  transition: 0.15s ease-in-out;
   user-select: none;
 `
