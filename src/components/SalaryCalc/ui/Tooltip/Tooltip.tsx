@@ -45,4 +45,7 @@ const Tooltip = styled.section`
     top: -12px;
     width: 0;
   }
+  @media only screen and (max-width: 360px) {
+    max-width: 180px;
+  }
 `

@@ -43,7 +43,13 @@ const Container = styled.section`
 `
 
 const Row = styled.span`
-  margin-bottom: 5px;
+  margin-bottom: 8px;
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+  @media only screen and (max-width: 360px) {
+    margin-bottom: 12px;
+  }
 `
 
 const Amount = styled.span`

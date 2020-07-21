@@ -76,10 +76,8 @@ const Input = styled(NumberFormat)`
     color: ${(props): string => props.theme.grey};
     font-size: 14px;
   }
-  @media only screen and (max-width: 405px) {
-    font-size: 14px;
-  }
 `
+
 const Currency = styled.span`
   color: ${(props): string => props.theme.black};
   font-size: 17px;

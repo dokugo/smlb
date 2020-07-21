@@ -23,4 +23,7 @@ export default SalaryForm
 
 const FormContainer = styled.section`
   padding: 50px;
+  @media only screen and (max-width: 600px) {
+    padding: 10px;
+  }
 `
