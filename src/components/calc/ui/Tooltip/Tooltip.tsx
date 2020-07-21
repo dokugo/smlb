@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import styled from 'styled-components/macro'
-import { Transition } from 'utils/style'
+import { Transition } from 'utils/transition'
 
 interface Props {
   text: string

@@ -1,13 +1,14 @@
-import SalaryCalc from 'components/SalaryCalc'
 import React, { FC } from 'react'
 import { hot } from 'react-hot-loader/root'
 import { createGlobalStyle } from 'styled-components/macro'
+
+import { Calc } from './components'
 
 const App: FC = () => {
   return (
     <>
       <GlobalStyle />
-      <SalaryCalc />
+      <Calc />
     </>
   )
 }

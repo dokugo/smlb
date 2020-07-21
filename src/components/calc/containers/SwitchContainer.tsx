@@ -3,7 +3,7 @@ import { connect, ConnectedProps } from 'react-redux'
 import { RootState } from 'store/rootReducer'
 import { toggleWithTax } from 'store/salary/actions'
 import { PaymentMode } from 'store/salary/types'
-import { Transition } from 'utils/style'
+import { Transition } from 'utils/transition'
 
 import { switchLabel } from '../constants'
 import Switch from '../ui/Switch'

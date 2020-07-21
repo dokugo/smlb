@@ -1,7 +1,7 @@
-import { transitionTime } from 'config/theme'
 import React, { FC } from 'react'
 import TransitionUtil from 'react-transition-group/Transition'
 import styled from 'styled-components/macro'
+import { transitionTime } from 'theme'
 
 const AnimatedBox = styled.section<{ transition: string }>`
   opacity: ${({ transition }): number =>

@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 import { connect, ConnectedProps } from 'react-redux'
 import { RootState } from 'store/rootReducer'
 import { Calculated, PaymentMode } from 'store/salary/types'
-import { Transition } from 'utils/style'
+import { Transition } from 'utils/transition'
 
 import { infoboxData } from '../constants'
 import Infobox from '../ui/Infobox'
