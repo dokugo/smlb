@@ -1,4 +1,5 @@
 import React, { FC } from 'react'
+import NumberFormat from 'react-number-format'
 import { InputPlaceholder, PaymentMode, SalaryInput } from 'store/salary/types'
 import styled from 'styled-components/macro'
 
@@ -6,7 +7,7 @@ interface Props {
   placeholder: InputPlaceholder
   paymentMode: PaymentMode
   inputData: SalaryInput
-  updateInputData: (input: number | '') => void
+  updateInputData: (input: SalaryInput) => void
 }
 
 const InputComponent: FC<Props> = ({
@@ -15,15 +16,13 @@ const InputComponent: FC<Props> = ({
   inputData,
   updateInputData,
 }) => {
-  const inputDataString = inputData?.toLocaleString('ru')
-
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     if (!event.target.validity.valid) return
 
-    const cleanString = event.target.value.replace(/\s+/g, '')
-    if (cleanString.length > 12) return
+    const stringWithoutSpaces = event.target.value.replace(/\s+/g, '')
+    const payload = Number(stringWithoutSpaces) || ''
+    if (payload === inputData) return
 
-    const payload = Number(cleanString) || ''
     updateInputData(payload)
   }
 
@@ -33,8 +32,10 @@ const InputComponent: FC<Props> = ({
         onChange={handleChange}
         type="text"
         pattern="[0-9\s]*"
+        thousandSeparator={' '}
+        maxLength={15}
         placeholder={placeholder.field}
-        value={inputDataString}
+        value={inputData}
       />
       <Currency>{placeholder.label[paymentMode]}</Currency>
     </Label>
@@ -50,7 +51,8 @@ const Label = styled.label`
   position: relative;
   width: 100%;
 `
-const Input = styled.input`
+
+const Input = styled(NumberFormat)`
   border: none;
   border-radius: 15px;
   box-shadow: 0 0 0 1px ${(props): string => props.theme.grey};
