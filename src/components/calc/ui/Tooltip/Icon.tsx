@@ -1,32 +1,27 @@
 import React, { FC, useEffect, useRef } from 'react'
 import styled from 'styled-components/macro'
 
+type ToggleFunction = (toggle: boolean | ((toggle: boolean) => boolean)) => void
+
 interface Props {
-  iconClicked: boolean
-  iconHovered: boolean
-  toggleIconClicked: (toggle: boolean) => void
-  toggleIconHovered: (toggle: boolean) => void
+  clicked: boolean
+  toggleClick: ToggleFunction
+  toggleHover: ToggleFunction
 }
 
-const IconComponent: FC<Props> = ({
-  iconClicked,
-  iconHovered,
-  toggleIconClicked,
-  toggleIconHovered,
-}) => {
+const IconComponent: FC<Props> = ({ clicked, toggleClick, toggleHover }) => {
   const icon = useRef<HTMLSpanElement>(null)
 
-  const handleMouseOver = (): void => toggleIconHovered(!iconHovered)
+  const handleMouseOver = (): void => toggleHover((iconHovered) => !iconHovered)
 
-  const handleMouseOut = (): void => toggleIconHovered(!iconHovered)
+  const handleMouseOut = (): void => toggleHover((iconHovered) => !iconHovered)
 
-  const handleInsideClick = (): void => toggleIconClicked(!iconClicked)
+  const handleInsideClick = (): void => toggleClick((clicked) => !clicked)
 
   const handleKeyDown = (event: React.KeyboardEvent): void => {
-    if (event.key === 'Enter') {
-      toggleIconClicked(!iconClicked)
-    }
+    if (event.key === 'Enter') toggleClick((clicked) => !clicked)
   }
+
   useEffect(() => {
     const handleOutsideClick = (event: MouseEvent): void => {
       const { classList } = event.target as HTMLElement
@@ -35,16 +30,14 @@ const IconComponent: FC<Props> = ({
       if (classList.contains('Tooltip')) return
       if (classList.contains('Icon')) return
 
-      toggleIconClicked(false)
+      toggleClick(false)
     }
 
     const handleOutsideKey = (event: KeyboardEvent): void => {
-      if (event.key === 'Escape') {
-        toggleIconClicked(false)
-      }
+      if (event.key === 'Escape') toggleClick(false)
     }
 
-    if (iconClicked) {
+    if (clicked) {
       document.addEventListener('mousedown', handleOutsideClick)
       document.addEventListener('keydown', handleOutsideKey)
     } else {
@@ -56,19 +49,19 @@ const IconComponent: FC<Props> = ({
       document.removeEventListener('mousedown', handleOutsideClick)
       document.removeEventListener('keydown', handleOutsideKey)
     }
-  }, [iconClicked, toggleIconClicked])
+  }, [clicked, toggleClick])
 
   return (
     <Icon
       className="Icon"
-      isActive={iconClicked}
+      isActive={clicked}
       onClick={handleInsideClick}
       onKeyDown={handleKeyDown}
       onMouseOver={handleMouseOver}
       onMouseOut={handleMouseOut}
       ref={icon}
     >
-      {iconClicked ? '✖' : 'i'}
+      {clicked ? '✖' : 'i'}
     </Icon>
   )
 }

@@ -9,22 +9,17 @@ interface Props {
 }
 
 const TooltipContainer: FC<Props> = ({ text }) => {
-  const [iconClicked, toggleIconClicked] = useState(false)
-  const [iconHovered, toggleIconHovered] = useState(false)
+  const [clicked, toggleClick] = useState(false)
+  const [hovered, toggleHover] = useState(false)
 
   return (
     <Container>
       <Icon
-        iconClicked={iconClicked}
-        iconHovered={iconHovered}
-        toggleIconClicked={toggleIconClicked}
-        toggleIconHovered={toggleIconHovered}
+        clicked={clicked}
+        toggleClick={toggleClick}
+        toggleHover={toggleHover}
       />
-      <Tooltip
-        text={text}
-        iconClicked={iconClicked}
-        iconHovered={iconHovered}
-      />
+      <Tooltip text={text} clicked={clicked} hovered={hovered} />
     </Container>
   )
 }

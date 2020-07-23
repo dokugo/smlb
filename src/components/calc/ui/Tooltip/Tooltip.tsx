@@ -4,12 +4,12 @@ import { Transition } from 'utils/transition'
 
 interface Props {
   text: string
-  iconClicked: boolean
-  iconHovered: boolean
+  clicked: boolean
+  hovered: boolean
 }
 
-const TooltipComponent: FC<Props> = ({ text, iconClicked, iconHovered }) => {
-  const isShown = iconHovered ? iconHovered : iconClicked ? iconClicked : false
+const TooltipComponent: FC<Props> = ({ text, clicked, hovered }) => {
+  const isShown = hovered ? hovered : clicked ? clicked : false
 
   return (
     <Transition condition={isShown}>
