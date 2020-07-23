@@ -27,14 +27,14 @@ const Infobox: FC<Infobox> = ({ infoboxData, calculated }) => {
     return <RowElement key={item.id} amount={amount} text={item.text} />
   })
 
-  return <Container>{rows}</Container>
+  return <List>{rows}</List>
 }
 
 export default Infobox
 
-const Container = styled.section`
-  background: ${(props): string => props.theme.lightyellow};
-  color: ${(props): string => props.theme.black};
+const List = styled.section`
+  background: ${({ theme }): string => theme.colors.lightyellow};
+  color: ${({ theme }): string => theme.colors.black};
   display: flex;
   flex-direction: column;
   font-weight: 400;

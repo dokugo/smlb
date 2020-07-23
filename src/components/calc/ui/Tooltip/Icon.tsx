@@ -61,7 +61,7 @@ const IconComponent: FC<Props> = ({
   return (
     <Icon
       className="Icon"
-      active={iconClicked}
+      isActive={iconClicked}
       onClick={handleInsideClick}
       onKeyDown={handleKeyDown}
       onMouseOver={handleMouseOver}
@@ -75,23 +75,24 @@ const IconComponent: FC<Props> = ({
 
 export default IconComponent
 
-const Icon = styled.span<{ active: boolean }>`
+const Icon = styled.span<{ isActive: boolean }>`
   align-items: center;
-  border: 1px solid ${(props): string => props.theme.grey};
+  border: 1px solid ${({ theme }): string => theme.colors.grey};
   border-radius: 10px;
   box-sizing: border-box;
-  color: ${(props): string => props.theme.grey};
+  color: ${({ theme }): string => theme.colors.grey};
   cursor: pointer;
   display: flex;
-  font-size: ${(props): string => (props.active ? '10px' : '12px')};
+  font-size: ${({ isActive }): string => (isActive ? '10px' : '12px')};
   font-weight: 700;
   height: 20px;
   justify-content: center;
-  transition: 0.15s ease-in-out;
+  transition-duration: ${({ theme }): string => theme.animation.fast};
+  transition-timing-function: ${({ theme }): string => theme.animation.func};
   user-select: none;
   width: 20px;
   &:hover {
-    border-color: ${(props): string => props.theme.darkblue};
-    color: ${(props): string => props.theme.darkblue};
+    border-color: ${({ theme }): string => theme.colors.darkblue};
+    color: ${({ theme }): string => theme.colors.darkblue};
   }
 `

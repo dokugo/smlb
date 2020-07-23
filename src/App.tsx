@@ -15,10 +15,10 @@ const App: FC = () => {
 
 export default hot(App)
 
-const GlobalStyle = createGlobalStyle`
+const GlobalStyle = createGlobalStyle` 
   body {
     margin: 0;
-    background: ${(props): string => props.theme.body};
+    background: ${({ theme }): string => theme.colors.body};
     font-family: 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell',
       'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   }

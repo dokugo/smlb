@@ -5,7 +5,6 @@ export const Box = styled.div`
   flex-direction: column;
   margin-top: 15px;
   padding-left: 45px;
-  width: fit-content;
 `
 
 export const TitleBox = styled(Box)`

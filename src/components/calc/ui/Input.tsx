@@ -55,9 +55,9 @@ const Label = styled.label`
 const Input = styled(NumberFormat)`
   border: none;
   border-radius: 15px;
-  box-shadow: 0 0 0 1px ${(props): string => props.theme.grey};
+  box-shadow: 0 0 0 1px ${({ theme }): string => theme.colors.grey};
   box-sizing: border-box;
-  color: ${(props): string => props.theme.black};
+  color: ${({ theme }): string => theme.colors.black};
   display: block;
   font-family: 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell',
     'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
@@ -66,23 +66,25 @@ const Input = styled(NumberFormat)`
   height: 30px;
   line-height: 30px;
   padding: 0 15px;
-  transition: 0.15s ease-in-out;
+  transition-duration: ${({ theme }): string => theme.animation.fast};
+  transition-timing-function: ${({ theme }): string => theme.animation.func};
   width: 155px;
   &:focus {
-    box-shadow: 0 0 0 1px ${(props): string => props.theme.black};
+    box-shadow: 0 0 0 1px ${({ theme }): string => theme.colors.black};
     outline: 0;
   }
   &::placeholder {
-    color: ${(props): string => props.theme.grey};
+    color: ${({ theme }): string => theme.colors.grey};
     font-size: 14px;
   }
 `
 
 const Currency = styled.span`
-  color: ${(props): string => props.theme.black};
+  color: ${({ theme }): string => theme.colors.black};
   font-size: 17px;
   font-weight: 700;
   padding: 0 10px;
-  transition: 0.15s ease-in-out;
+  transition-duration: ${({ theme }): string => theme.animation.fast};
+  transition-timing-function: ${({ theme }): string => theme.animation.func};
   user-select: none;
 `

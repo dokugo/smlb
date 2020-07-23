@@ -68,7 +68,7 @@ const Radio = styled.input<{ isActive: boolean }>`
 const Label = styled.label<{ isActive: boolean }>`
   align-items: center;
   box-sizing: border-box;
-  color: ${(props): string => props.theme.black};
+  color: ${({ theme }): string => theme.colors.black};
   cursor: pointer;
   display: flex;
   font-size: 16px;
@@ -78,7 +78,7 @@ const Label = styled.label<{ isActive: boolean }>`
   position: relative;
   user-select: none;
   &::before {
-    border: 0.5px solid ${(props): string => props.theme.grey};
+    border: 0.5px solid ${({ theme }): string => theme.colors.grey};
     border-radius: 50%;
     box-sizing: border-box;
     content: '';
@@ -88,12 +88,13 @@ const Label = styled.label<{ isActive: boolean }>`
     margin-right: 10px;
     position: relative;
     top: 0;
-    transition: 0.15s ease-in-out;
+    transition-duration: ${({ theme }): string => theme.animation.fast};
+    transition-timing-function: ${({ theme }): string => theme.animation.func};
     width: 14px;
   }
   &::after {
-    background: ${(props): string =>
-      props.isActive ? props.theme.black : 'none'};
+    background: ${({ theme, isActive }): string =>
+      isActive ? theme.colors.black : 'none'};
     border-radius: 50%;
     box-sizing: border-box;
     content: '';
@@ -102,7 +103,8 @@ const Label = styled.label<{ isActive: boolean }>`
     position: absolute;
     right: calc(100% - 11px);
     top: 5.5px;
-    transition: 0.15s ease-in-out;
+    transition-duration: ${({ theme }): string => theme.animation.fast};
+    transition-timing-function: ${({ theme }): string => theme.animation.func};
     width: 8px;
   }
   &:active {

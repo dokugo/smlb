@@ -38,7 +38,7 @@ const SwitchComponent: FC<Props> = ({ label, isActive, toggleIsActive }) => {
 export default SwitchComponent
 
 export const Label = styled.label`
-  color: ${(props): string => props.theme.grey};
+  color: ${({ theme }): string => theme.colors.grey};
   cursor: pointer;
   display: flex;
   font-size: 12px;
@@ -50,9 +50,11 @@ export const Label = styled.label`
 `
 
 const LabelAside = styled.span<{ isActive: boolean }>`
-  color: ${(props): string => (props.isActive ? 'inherit' : props.theme.black)};
+  color: ${({ theme, isActive }): string =>
+    isActive ? 'inherit' : theme.colors.black};
   font-weight: 700;
-  transition: 0.15s ease-in-out;
+  transition-duration: ${({ theme }): string => theme.animation.fast};
+  transition-timing-function: ${({ theme }): string => theme.animation.func};
 `
 
 const SwitchBox = styled.div`
@@ -68,8 +70,8 @@ const Switch = styled.input<{ isActive: boolean }>`
   position: relative;
   width: 0;
   &::before {
-    background: ${(props): string =>
-      props.isActive ? props.theme.orange : props.theme.lightgrey};
+    background: ${({ theme, isActive }): string =>
+      isActive ? theme.colors.orange : theme.colors.lightgrey};
     border-radius: 20px;
     content: '';
     display: block;
@@ -77,23 +79,25 @@ const Switch = styled.input<{ isActive: boolean }>`
     left: 0;
     position: relative;
     top: 0;
-    transition: 0.3s ease-in-out;
+    transition-duration: ${({ theme }): string => theme.animation.mild};
+    transition-timing-function: ${({ theme }): string => theme.animation.func};
     width: 35px;
   }
   &::after {
-    background: ${(props): string => props.theme.white};
+    background: ${({ theme }): string => theme.colors.white};
     border-radius: 50%;
     content: '';
     display: block;
     height: 16px;
-    left: ${(props): string => (props.isActive ? '17px' : '2px')};
+    left: ${({ isActive }): string => (isActive ? '17px' : '2px')};
     position: absolute;
     top: 2px;
-    transition: 0.3s ease-in-out;
+    transition-duration: ${({ theme }): string => theme.animation.mild};
+    transition-timing-function: ${({ theme }): string => theme.animation.func};
     width: 16px;
   }
   &:active::after {
-    left: ${(props): string => (props.isActive ? '15px' : '2px')};
+    left: ${({ isActive }): string => (isActive ? '15px' : '2px')};
     width: 18px;
   }
 `

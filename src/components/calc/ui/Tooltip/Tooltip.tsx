@@ -21,10 +21,10 @@ const TooltipComponent: FC<Props> = ({ text, iconClicked, iconHovered }) => {
 export default TooltipComponent
 
 const Tooltip = styled.section`
-  background: ${(props): string => props.theme.darkblue};
-  box-shadow: 0 16px 48px 0 ${(props): string => props.theme.shadow};
+  background: ${({ theme }): string => theme.colors.darkblue};
+  box-shadow: 0 16px 48px 0 ${({ theme }): string => theme.colors.shadow};
   box-sizing: border-box;
-  color: ${(props): string => props.theme.white};
+  color: ${({ theme }): string => theme.colors.white};
   display: block;
   font-size: 12px;
   font-weight: 500;
@@ -36,7 +36,7 @@ const Tooltip = styled.section`
   top: 36px;
   width: 220px;
   &::before {
-    border-bottom: 12px solid ${(props): string => props.theme.darkblue};
+    border-bottom: 12px solid ${({ theme }): string => theme.colors.darkblue};
     border-right: 12px solid transparent;
     content: '';
     height: 0;

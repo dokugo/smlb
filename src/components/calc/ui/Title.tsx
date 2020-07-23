@@ -13,7 +13,7 @@ const TitleComponent: FC = () => (
 export default TitleComponent
 
 const Title = styled.h2`
-  color: ${(props): string => props.theme.grey};
+  color: ${({ theme }): string => theme.colors.grey};
   font-size: 12px;
   font-weight: 500;
   margin: 0;
