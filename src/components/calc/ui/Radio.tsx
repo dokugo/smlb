@@ -27,13 +27,16 @@ const RadioComponent: FC<Props> = ({
     }
   }
 
-  const handleChange = (): void => {
-    changeIsActive(value)
-  }
+  const handleClick = (): void => changeIsActive(value)
 
   return (
     <Container>
-      <Label isActive={active} tabIndex={1} onKeyDown={handleKeyDown}>
+      <Label
+        isActive={isActive}
+        tabIndex={0}
+        onKeyDown={handleKeyDown}
+        onClick={handleClick}
+      >
         <Radio
           value={value}
           name={name}
