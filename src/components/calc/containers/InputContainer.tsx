@@ -3,7 +3,6 @@ import { connect, ConnectedProps } from 'react-redux'
 import { RootState } from 'store/rootReducer'
 import { setSalaryInput } from 'store/salary/actions'
 import { PaymentMode, SalaryInput } from 'store/salary/types'
-import { Transition } from 'utils/transition'
 
 import { inputPlaceholder } from '../constants'
 import Input from '../ui/Input'
@@ -16,8 +15,8 @@ const InputContainer: FC<StoreProps> = ({
 }) => {
   const isShown = paymentMode !== PaymentMode.Minimal
 
-  return (
-    <Transition condition={isShown}>
+  if (isShown) {
+    return (
       <Container>
         <Input
           placeholder={inputPlaceholder}
@@ -26,8 +25,8 @@ const InputContainer: FC<StoreProps> = ({
           updateInputData={setSalaryInput}
         />
       </Container>
-    </Transition>
-  )
+    )
+  } else return null
 }
 
 const mapStateToProps = (

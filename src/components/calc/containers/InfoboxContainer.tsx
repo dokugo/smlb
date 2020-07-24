@@ -2,7 +2,6 @@ import React, { FC } from 'react'
 import { connect, ConnectedProps } from 'react-redux'
 import { RootState } from 'store/rootReducer'
 import { Calculated, PaymentMode } from 'store/salary/types'
-import { Transition } from 'utils/transition'
 
 import { infoboxData } from '../constants'
 import Infobox from '../ui/Infobox'
@@ -15,13 +14,13 @@ const InfoboxContainer: FC<Props> = ({ paymentMode, calculated }) => {
 
   const isHidden = paymentMode !== PaymentMode.Monthly || !net || !tax || !cost
 
-  return (
-    <Transition condition={!isHidden}>
+  if (!isHidden) {
+    return (
       <Container>
         <Infobox infoboxData={infoboxData} calculated={calculated} />
       </Container>
-    </Transition>
-  )
+    )
+  } else return null
 }
 
 const mapStateToProps = (

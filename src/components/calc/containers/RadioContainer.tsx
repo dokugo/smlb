@@ -19,7 +19,7 @@ const RadioContainer: FC<StoreProps> = ({ paymentMode, changePaymentMode }) => {
         text={item.text}
         value={item.value}
         name={radioData.name}
-        isActive={paymentMode}
+        mode={paymentMode}
         changeIsActive={changePaymentMode}
         tooltip={tooltip}
       />

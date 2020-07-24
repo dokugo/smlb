@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import TransitionUtil from 'react-transition-group/Transition'
 import styled from 'styled-components/macro'
-import theme, { TRANSITION_TIME_NUMERIC } from 'theme'
+import theme, { BASIC_TRANSITION_TIME_NUMERIC } from 'theme'
 
 const AnimatedBox = styled.section<{ transition: string }>`
   opacity: ${({ transition }): number =>
@@ -33,10 +33,10 @@ interface Props {
   children: React.ReactNode
 }
 
-export const Transition: FC<Props> = ({ condition, children }) => (
+const Transition: FC<Props> = ({ condition, children }) => (
   <TransitionUtil
     in={condition}
-    timeout={{ enter: 0, exit: TRANSITION_TIME_NUMERIC }}
+    timeout={{ enter: 0, exit: BASIC_TRANSITION_TIME_NUMERIC }}
     unmountOnExit
     mountOnEnter
   >
@@ -45,3 +45,5 @@ export const Transition: FC<Props> = ({ condition, children }) => (
     )}
   </TransitionUtil>
 )
+
+export default Transition

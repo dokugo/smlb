@@ -6,7 +6,7 @@ interface Props {
   text: string
   value: PaymentMode
   name: string
-  isActive: string
+  mode: string
   changeIsActive: (value: PaymentMode) => void
   tooltip?: React.ReactNode
 }
@@ -15,11 +15,11 @@ const RadioComponent: FC<Props> = ({
   text,
   value,
   name,
-  isActive,
+  mode,
   changeIsActive,
   tooltip,
 }) => {
-  const active = isActive === value
+  const isActive = mode === value
 
   const handleKeyDown = (event: React.KeyboardEvent): void => {
     if (event.key === 'Enter') {
@@ -37,8 +37,7 @@ const RadioComponent: FC<Props> = ({
         <Radio
           value={value}
           name={name}
-          isActive={active}
-          onChange={handleChange}
+          isActive={isActive}
           tabIndex={-1}
           type="radio"
         />
