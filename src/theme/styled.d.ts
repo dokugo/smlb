@@ -11,6 +11,7 @@ declare module 'styled-components' {
       lightyellow: string
       orange: string
       shadow: string
+      semiwhite: string
       white: string
     }
     animation: {

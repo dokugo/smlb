@@ -6,7 +6,7 @@ import { PaymentMode, SalaryInput } from 'store/salary/types'
 
 import { inputPlaceholder } from '../constants'
 import Input from '../ui/Input'
-import { MediumMarginBox as Container } from './Box'
+import { InputContainer as Container } from './Box'
 
 const InputContainer: FC<StoreProps> = ({
   paymentMode,

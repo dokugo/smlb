@@ -7,7 +7,7 @@ import { PaymentMode } from 'store/salary/types'
 import { radioData } from '../constants'
 import Radio from '../ui/Radio'
 import Tooltip from '../ui/Tooltip'
-import { LesserPaddingBox as Container } from './Box'
+import { RadioContainer as Container } from './Box'
 
 const RadioContainer: FC<StoreProps> = ({ paymentMode, changePaymentMode }) => {
   const radios = radioData.types.map((item) => {

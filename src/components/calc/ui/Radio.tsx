@@ -104,7 +104,7 @@ const Label = styled.label<{ isActive: boolean }>`
     height: 8px;
     position: absolute;
     right: calc(100% - 11px);
-    top: 5.5px;
+    top: 6px;
     transition-duration: ${({ theme }): string => theme.animation.fast};
     transition-timing-function: ${({ theme }): string => theme.animation.func};
     width: 8px;

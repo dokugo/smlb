@@ -12,7 +12,8 @@ const theme: DefaultTheme = {
     lightyellow: 'rgb(250, 245, 220)',
     orange: 'rgb(250, 160, 55)',
     shadow: 'rgba(0, 0, 0, 0.175)',
-    white: 'rgb(250, 250, 250)',
+    semiwhite: 'rgb(250, 250, 250)',
+    white: 'rgb(255, 255, 255)',
   },
   animation: {
     fast: `${BASIC_TRANSITION_TIME_NUMERIC}ms`,

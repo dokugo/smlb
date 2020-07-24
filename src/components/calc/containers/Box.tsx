@@ -1,9 +1,8 @@
 import styled from 'styled-components/macro'
 
 export const Box = styled.div`
-  display: flex;
-  flex-direction: column;
   margin-top: 15px;
+  max-width: fit-content;
   padding-left: 45px;
 `
 
@@ -12,14 +11,15 @@ export const TitleBox = styled(Box)`
   padding-left: 0;
 `
 
-export const LesserPaddingBox = styled(Box)`
+export const RadioContainer = styled(Box)`
   padding-left: 20px;
 `
 
-export const MediumMarginBox = styled(Box)`
+export const InputContainer = styled(Box)`
   margin-top: 20px;
 `
 
-export const LargeMarginBox = styled(Box)`
+export const InfoboxContainer = styled(Box)`
   margin-top: 25px;
+  max-width: unset;
 `

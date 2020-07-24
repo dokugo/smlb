@@ -70,6 +70,7 @@ export default IconComponent
 
 const Icon = styled.span<{ isActive: boolean }>`
   align-items: center;
+  background: ${({ theme }): string => theme.colors.white};
   border: 1px solid ${({ theme }): string => theme.colors.grey};
   border-radius: 10px;
   box-sizing: border-box;
@@ -81,6 +82,7 @@ const Icon = styled.span<{ isActive: boolean }>`
   height: 20px;
   justify-content: center;
   transition-duration: ${({ theme }): string => theme.animation.fast};
+  transition-property: border-color;
   transition-timing-function: ${({ theme }): string => theme.animation.func};
   user-select: none;
   width: 20px;

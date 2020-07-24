@@ -24,7 +24,7 @@ const Tooltip = styled.section`
   background: ${({ theme }): string => theme.colors.darkblue};
   box-shadow: 0 16px 48px 0 ${({ theme }): string => theme.colors.shadow};
   box-sizing: border-box;
-  color: ${({ theme }): string => theme.colors.white};
+  color: ${({ theme }): string => theme.colors.semiwhite};
   display: block;
   font-size: 12px;
   font-weight: 500;

@@ -5,7 +5,7 @@ import { Calculated, PaymentMode } from 'store/salary/types'
 
 import { infoboxData } from '../constants'
 import Infobox from '../ui/Infobox'
-import { LargeMarginBox as Container } from './Box'
+import { InfoboxContainer as Container } from './Box'
 
 type Props = StoreProps
 

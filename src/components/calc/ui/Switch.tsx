@@ -45,6 +45,7 @@ export const Label = styled.label`
   font-weight: 500;
   height: 20px;
   line-height: 20px;
+  min-width: max-content;
   user-select: none;
   width: fit-content;
 `

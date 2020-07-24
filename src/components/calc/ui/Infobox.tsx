@@ -39,7 +39,11 @@ const List = styled.section`
   flex-direction: column;
   font-weight: 400;
   max-width: fit-content;
+  min-width: max-content;
   padding: 25px 30px;
+  @media only screen and (max-width: 600px) {
+    min-width: unset;
+  }
 `
 
 const Row = styled.span`

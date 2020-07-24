@@ -53,6 +53,7 @@ const Label = styled.label`
 `
 
 const Input = styled(NumberFormat)`
+  background: ${({ theme }): string => theme.colors.white};
   border: none;
   border-radius: 15px;
   box-shadow: 0 0 0 1px ${({ theme }): string => theme.colors.grey};
@@ -76,6 +77,7 @@ const Input = styled(NumberFormat)`
   &::placeholder {
     color: ${({ theme }): string => theme.colors.grey};
     font-size: 14px;
+    user-select: none;
   }
 `
 
